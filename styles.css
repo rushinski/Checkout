@@ -253,7 +253,7 @@ html, body {
 }
 
 .cart-row {
-    display: flex;
+    display: none;
 }
 
 .cart-item {
