@@ -252,10 +252,6 @@ html, body {
     margin-top: 10px;
 }
 
-.cart-row {
-    display: none;
-}
-
 .cart-item {
     width: 45%;
 }
@@ -337,4 +333,32 @@ html, body {
     display: block;
     margin: 40px auto 80px auto;
     font-size: 1.75em;
+}
+
+#album1 {
+    display: none;
+}
+
+#album2 {
+    display: none;
+}
+
+#album3 {
+    display: none;
+}
+
+#album4 {
+    display: none;
+}
+
+#tshirt {
+    display: none;
+}
+
+#coffee-mug {
+    display: none;
+}
+
+.cart-row {
+    display: flex;
 }
