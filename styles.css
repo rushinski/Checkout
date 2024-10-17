@@ -19,6 +19,7 @@ html, body {
     margin: 0;
     padding: 0;
     min-height: 100%;
+    position: relative;
 }
 
 .nav ul {
@@ -361,4 +362,30 @@ html, body {
 
 .cart-row {
     display: flex;
+}
+
+.pop-up {
+    border-radius: 10px;
+    border: #56CCF2 solid 4px;
+    background-color: white;
+    position: fixed;
+    top: 50%;
+    right: 35%;
+    padding: 50px;
+    font-size: 25px;
+    color: black;
+}
+
+.close {
+    background-color: white;
+    color: #EB5757;
+    font: 12px;
+    position: fixed;
+    top: 53.7%;
+    right: 538px;
+    border: none;
+    font-weight: bolder;
+}
+.close:hover {
+    color: #CC4C4C;
 }
