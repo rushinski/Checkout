@@ -12,12 +12,13 @@ function addItem(item) {
     let close = document.createElement('button');
     close.textContent ='X';
     close.classList.add('close');
-    close.onclick = function() {closePopUp()};
+    close.onclick = function() {closePopUp()}; // JS version of onclick
     document.body.appendChild(close);
     
   } else {
-    // '$' gets the location in the CSS file, gets the id in the file and then sets the display to flex
-    $("#" + item.value).css("display", "flex"); 
+    $("#" + item.value).css("display", "flex"); // '$' gets the location in the CSS file, gets the id in the file and then sets the display to flex
+    let data = document.querySelector("#" + item.id); // Gets the id of item along with all data inside of it
+    let basePrice = Number(data.dataset.price);
   }
 }
 
@@ -28,4 +29,9 @@ function removeItem(item) {
 function closePopUp() {
   $(".close").css("display", "none");
   $(".pop-up").css("display", "none");
+}
+
+function getPrice(price, numQuantity) {
+  let quantity = numQuantity.value;
+  let total = Number(quantity * price);
 }

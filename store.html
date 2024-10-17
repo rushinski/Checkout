@@ -25,7 +25,7 @@
                     <img class="shop-item-image" src="Images/Album 1.png">
                     <div class="shop-item-details">
                         <span class="shop-item-price">$12.99</span>
-                        <button class="btn btn-primary shop-item-button" type="button" value="album1" onclick="addItem(this)">ADD TO CART</button>
+                        <button class="btn btn-primary shop-item-button" type="button" id="one" value="album1" data-price="12.99" onclick="addItem(this)">ADD TO CART</button>
                     </div>
                 </div>
                 <div class="shop-item">
@@ -33,7 +33,7 @@
                     <img class="shop-item-image" src="Images/Album 2.png">
                     <div class="shop-item-details">
                         <span class="shop-item-price">$14.99</span>
-                        <button class="btn btn-primary shop-item-button"type="button" value="album2" onclick="addItem(this)">ADD TO CART</button>
+                        <button class="btn btn-primary shop-item-button"type="button" id="two" value="album2" data-price="14.99" onclick="addItem(this)">ADD TO CART</button>
                     </div>
                 </div>
                 <div class="shop-item">
@@ -41,7 +41,7 @@
                     <img class="shop-item-image" src="Images/Album 3.png">
                     <div class="shop-item-details">
                         <span class="shop-item-price">$9.99</span>
-                        <button class="btn btn-primary shop-item-button" type="button" value="album3" onclick="addItem(this)">ADD TO CART</button>
+                        <button class="btn btn-primary shop-item-button" type="button" id="three" value="album3" data-price="9.99" onclick="addItem(this)">ADD TO CART</button>
                     </div>
                 </div>
                 <div class="shop-item">
@@ -49,7 +49,7 @@
                     <img class="shop-item-image" src="Images/Album 4.png">
                     <div class="shop-item-details">
                         <span class="shop-item-price">$19.99</span>
-                        <button class="btn btn-primary shop-item-button" type="button" value="album4" onclick="addItem(this)">ADD TO CART</button>
+                        <button class="btn btn-primary shop-item-button" type="button" id="four" value="album4" data-price="19.99" onclick="addItem(this)">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                     <img class="shop-item-image" src="Images/Shirt.png">
                     <div class="shop-item-details">
                         <span class="shop-item-price">$19.99</span>
-                        <button class="btn btn-primary shop-item-button" type="button" value="tshirt" onclick="addItem(this)">ADD TO CART</button>
+                        <button class="btn btn-primary shop-item-button" type="button" id="shirt" value="tshirt" data-price="19.99" onclick="addItem(this)">ADD TO CART</button>
                     </div>
                 </div>
                 <div class="shop-item">
@@ -70,7 +70,7 @@
                     <img class="shop-item-image" src="Images/Cofee.png">
                     <div class="shop-item-details">
                         <span class="shop-item-price">$6.99</span>
-                        <button class="btn btn-primary shop-item-button" type="button" value="coffee-mug" onclick="addItem(this)">ADD TO CART</button>
+                        <button class="btn btn-primary shop-item-button" type="button" id="mug" value="coffee-mug" data-price="6.99" onclick="addItem(this)">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -92,7 +92,7 @@
                     </div>
                     <span class="cart-price cart-column">$12.99</span>
                     <div class="cart-quantity cart-column">
-                        <input class="cart-quantity-input" type="number" value="1">
+                        <input class="cart-quantity-input" id="quantity1" type="number" value="1" onchange="getPrice(12.99, this)">
                         <button class="btn btn-danger" type="button" value="album1" onclick="removeItem(this)">REMOVE</button>
                     </div>
                 </div>
@@ -103,7 +103,7 @@
                     </div>
                     <span class="cart-price cart-column">$14.99</span>
                     <div class="cart-quantity cart-column">
-                        <input class="cart-quantity-input" type="number" value="1">
+                        <input class="cart-quantity-input" id="quantity2" type="number" value="1" onchange="getPrice(14.99, this)">
                         <button class="btn btn-danger" type="button" value="album2" onclick="removeItem(this)">REMOVE</button>
                     </div>
                 </div>
@@ -114,7 +114,7 @@
                     </div>
                     <span class="cart-price cart-column">$9.99</span>
                     <div class="cart-quantity cart-column">
-                        <input class="cart-quantity-input" type="number" value="1">
+                        <input class="cart-quantity-input" id="quantity3" type="number" value="1" onchange="getPrice(9.99, this)">
                         <button class="btn btn-danger" type="button" value="album3" onclick="removeItem(this)">REMOVE</button>
                     </div>
                 </div>
@@ -125,7 +125,7 @@
                     </div>
                     <span class="cart-price cart-column">$19.99</span>
                     <div class="cart-quantity cart-column">
-                        <input class="cart-quantity-input" type="number" value="1">
+                        <input class="cart-quantity-input" id="quantity4" type="number" value="1" onchange="getPrice(19.99, this)">
                         <button class="btn btn-danger" type="button" value="album4" onclick="removeItem(this)">REMOVE</button>
                     </div>
                 </div>
@@ -136,7 +136,7 @@
                     </div>
                     <span class="cart-price cart-column">$19.99</span>
                     <div class="cart-quantity cart-column">
-                        <input class="cart-quantity-input" type="number" value="1">
+                        <input class="cart-quantity-input" id="quantityShirt" type="number" value="1" onchange="getPrice(19.99, this)">
                         <button class="btn btn-danger" type="button" value="tshirt" onclick="removeItem(this)">REMOVE</button>
                     </div>
                 </div>
@@ -147,14 +147,14 @@
                     </div>
                     <span class="cart-price cart-column">$6.99</span>
                     <div class="cart-quantity cart-column">
-                        <input class="cart-quantity-input" type="number" value="1">
+                        <input class="cart-quantity-input" id="quantityMug" type="number" value="1" onchange="getPrice(6.99, this)">
                         <button class="btn btn-danger" type="button" value="coffee-mug" onclick="removeItem(this)">REMOVE</button>
                     </div>
                 </div>
             </div>
             <div class="cart-total">
                 <strong class="cart-total-title">Total</strong>
-                <span class="cart-total-price">$39.97</span>
+                <span class="cart-total-price"></span>
             </div>
             <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button>
         </section>
