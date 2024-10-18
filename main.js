@@ -85,8 +85,8 @@ function closePopUp() {
   $(".pop-up").css("display", "none");
 }
 
-function getPrice(price, numQuantity) {
-  let quantity = numQuantity.value;
+function getPrice(price, store) {
+  let quantity = store.value;
   if (quantity < 0) {
     quantity = 0;
   }
