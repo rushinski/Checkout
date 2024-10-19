@@ -21,8 +21,6 @@ function addItem(item) {
     document.body.appendChild(close);
   } else {
     $("#" + item.value).css("display", "flex"); // '$' gets the location in the CSS file, gets the id in the file and then sets the display to flex
-    // let data = document.querySelector("#" + item.id); // Gets the id of item along with all data inside of it
-    // let basePrice = Number(data.dataset.price);
   }
   emptyCart();
 }
@@ -31,6 +29,25 @@ function removeItem(item) {
   $("#" + item.value).css("display", "none");
   emptyCart();
   getPrice(0, 0);
+}
+
+function clearCart() {
+  $("#album1").css("display", "none");
+  $("#album2").css("display", "none");
+  $("#album3").css("display", "none");
+  $("#album4").css("display", "none");
+  $("#tshirt").css("display", "none");
+  $("#coffee-mug").css("display", "none");
+
+  $("#head-margin").css("margin-bottom", "100px");
+  $(".cart-head").css("display", "none");
+  $(".btn-purchase").css("display", "none");
+  $(".cart-total").css("display", "none");
+
+  let eCartH3 = document.createElement("h3");
+  eCartH3.textContent = "Your cart is currently empty!";
+  eCartH3.classList.add("empty-cart");
+  document.body.appendChild(eCartH3);
 }
 
 function emptyCart() {
@@ -85,34 +102,43 @@ function closePopUp() {
   $(".pop-up").css("display", "none");
 }
 
+let previousValue = 0;
+let fPrice = 0; 
+
 function getPrice(price, store) {
   let quantity = store.value;
+
   if (quantity < 0) {
     quantity = 0;
   }
-  let total = Number(quantity * price);
-  let checkNaN = Number.isNaN(total);
+
+  let checkNaN = Number.isNaN(price);
   if (checkNaN === true) {
-    total = 0;
+    price = 0;
   }
 
-  let elementIDs = [
-    "replace-album1",
-    "replace-album2",
-    "replace-album3",
-    "replace-album4",
-    "replace-shirt",
-    "replace-mug",
-  ];
+  // Log previous and current quantity
+  console.log("Previous quantity: " + previousValue);
+  console.log("New quantity: " + quantity);
 
-  for (let i = 0; i < elementIDs.length; i++) {
-    let currentElement = document.getElementById(elementIDs[i]);
-    let newElement = document.createElement("p");
-    newElement.setAttribute("id", elementIDs[i]);
-    newElement.textContent = `$ ${total.toFixed(2)}`; // toFixed makes the decimals a certain length in this case 2
-    currentElement.replaceWith(newElement); // Replace the old element with the new one
+  if (previousValue < quantity) {
+    console.log("Increasing quantity");
+    totalPrice(price);
+  } else if (previousValue > quantity) {
+    console.log("Decreasing quantity");
+    price = price * -1;
+    totalPrice(price);
+  } else {
+    console.log("No change in quantity");
+    totalPrice(0);
   }
+  previousValue = quantity;
+}
 
-  let totalPrice = document.getElementById("update-price");
-  totalPrice.innerHTML = `$ ${total.toFixed(2)}`;
+function totalPrice(val) {
+  fPrice += val;
+  console.log("Accumulated price: " + fPrice);
+
+  let totalPriceElement = document.getElementById("update-price");
+  totalPriceElement.innerHTML = `$ ${fPrice.toFixed(2)}`;
 }
